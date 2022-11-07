@@ -8,7 +8,7 @@
     <script src="http://www.khoa.go.kr/oceanmap/js/proj4js-1.1.0/lib/defs/EPSG5179.js" type="text/javascript"></script>
     <script src="http://www.khoa.go.kr/oceanmap/js/gis/OtmsApi.js" type="text/javascript"></script>
     <!-- 개방海 지도 서비스 호출 -->
-    <script src="http://www.khoa.go.kr/oceanmap/BASEMAP/otmsBasemapApi.do?ServiceKey=38B20FF091F861E39EFE0E58D" type="text/javascript"></script>
+    <script src="http://www.khoa.go.kr/oceanmap/BASEMAP/otmsBasemapApi.do?ServiceKey=2CCAAA41D06B52AA7C157185E" type="text/javascript"></script>
 
     <script type="text/javascript">
         var map;
@@ -78,7 +78,7 @@
         function getWFS() {
             var layerName = "TB_FACI_BEACH";    // 개방海 해수욕장정보 레이어 지정
             var url = "http://www.khoa.go.kr/oceanmap/otmsWfsApi.do";
-            url += "?ServiceKey=개방海에서 받은 서비스키";
+            url += "?ServiceKey=C5509635AA15DC388283DBF72";
             url += "&Layer=" + layerName;
 
             $.ajax({
@@ -91,7 +91,6 @@
                 success:function(response) {
                     // 정상적으로 데이터를 받아오면 받은 데이터를 파싱하여 지도상에 feature배열을 그려준다.
                     parseGML(response, layerName);
-                    console.log("성공");
                     console.log(response);
                 },
                 error:function(response) {
@@ -172,7 +171,7 @@
 </head>
 
 <body onload="init()">
-<div id="map" style="height:600px;"></div>
+<div id="map"></div>
 </body>
 
 </html>

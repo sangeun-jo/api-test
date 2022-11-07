@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>지오 빅데이터 플랫폼</title>
+    <script src="/static/jquery-3.6.1.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+
+</head>
+<body>
+
+    <div id="map" className="map"></div>
+    <script>
+        // 403 에러 뜸...
+        $.ajax({
+            url:'https://cors-anywhere.herokuapp.com/https://data.kigam.re.kr/openapi/wms', //request 보낼 서버의 경로
+            type:'get',
+            data:{
+                //'aP6qirIH6p4MUJjjvNZjxRnMoGhj7k'
+                'key' : 'y78WrEga4ylbTnIj5wLKRUhsPK7HKp',  //오픈API 신청을 통해 발급된 인증키
+                'layers' : 'M_geology_seismic_sections',  // 레이어명
+                'srs' : 'EPSG:4326',  // 요청좌표계
+                //'tiled' : true
+            },
+            success: function(data) {
+                //서버로부터 정상적으로 응답이 왔을 때 실행
+                console.log(data);
+            },
+            error: function(err) {
+                //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+                console.log(err);
+            }
+        });
+
+        /*
+        var olLayer = new ol.layer.Tile({
+            source: new ol.source.OSM()
+        });
+
+        var wmsLayer = new ol.layer.Tile({
+            source : new ol.source.TileWMS({
+                url : 'https://data.kigam.re.kr/openapi/wms',
+                params : {
+                    'key' : 'y78WrEga4ylbTnIj5wLKRUhsPK7HKp',                  //오픈API 신청을 통해 발급된 인증키
+                    'layers' : 'L_250K_Geology_Map',    // 레이어명
+                    'srs' : 'EPSG:4326',                // 요청좌표계
+                    'tiled' : true
+                },
+                serverType : 'geoserver'
+            }),
+            zIndex : 1001,
+            visible : true
+        });
+
+        var map = new ol.Map({
+            layers: [olLayer, wmsLayer],
+            target: 'map',
+            view: new ol.View({
+                center: [14268200.235611122, 4294263.171405556],
+                zoom: 8
+            })
+        });
+
+        */
+    </script>
+</body>
+</html>
